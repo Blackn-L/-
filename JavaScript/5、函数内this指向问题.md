@@ -174,6 +174,8 @@ obj1.f().call(window) // obj1, 无法更改箭头函数的this指向
 
 window.setTimeout()和window.setInterval()的函数中的this有些特殊，里面的this默认是window对象
 
+由`setTimeout()`调用的代码运行在与所在函数完全分离的执行环境上。这会导致，这些代码中包含的 `this` 关键字在非严格模式会指向 `window` (或全局)对象，严格模式下为 undefined，这和所期望的`this`的值是不一样的
+
 ```javascript
 var name = 'window'
 setTimeout(function(){console.log(this.name)}, 300)
